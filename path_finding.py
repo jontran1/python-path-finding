@@ -78,3 +78,64 @@ def a_star_path_finding(draw, grid, start, end, heuristic_func):
             current.make_closed()
 
     return False
+
+
+def dijkstra_shortest_path(draw, grid, start, end):
+    """
+        draw: lambda function that is run each iteration to upgrade grid.
+        grid: 2D array containing Node objects.
+        start: Node object
+        end: Node object
+    """
+
+    count = 0
+    open_set = PriorityQueue()
+
+    # Set distance for all nodes to infinity but start node.
+    distance_set = {node: float("inf") for row in grid for node in row}
+    distance_set[start] = 0
+
+    # Parent set for building path.
+    previous_parent = {}
+
+    # Start open set by placing start node in side.
+    # PriorityQueue by distance.
+    open_set.put((distance_set[start], count, start))
+
+    # Tracks whats in the open set.
+    open_set_tracker = {start}
+
+    while not open_set.empty():
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
+        current = open_set.get()[2]
+        open_set_tracker.remove(current)
+
+        if current == end:
+            build_path(previous_parent, start, end)
+            end.make_end()
+            start.make_start()
+            return True
+
+        for neighbor in current.get_neighbors():
+
+            current_to_neighbor = distance_set[current] + 1
+
+            if current_to_neighbor < distance_set[neighbor]:
+                distance_set[neighbor] = current_to_neighbor
+                previous_parent[neighbor] = current
+
+                if neighbor not in open_set_tracker:
+                    count += 1
+                    open_set.put((distance_set[neighbor], count, neighbor))
+                    open_set_tracker.add(neighbor)
+                    neighbor.make_open()
+
+        draw()
+
+        if current != start:
+            current.make_closed()
+
+    return False

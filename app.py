@@ -214,11 +214,24 @@ def main(window, width):
 
             elif event.type == pygame.KEYDOWN:
 
-                if event.key == pygame.K_SPACE and start and end:
+                if event.key == pygame.K_KP0 and start and end:
                     update_nodes_neighbors(grid)
 
                     pf.a_star_path_finding(lambda: draw(window, grid,
                                                         ROWS, width), grid, start, end, heuristic.manhattan_distance)
+
+                if event.key == pygame.K_KP1 and start and end:
+                    update_nodes_neighbors(grid)
+
+                    pf.dijkstra_shortest_path(lambda: draw(window, grid,
+                                                           ROWS, width), grid, start, end)
+
+                elif event.key == pygame.K_c:
+                    window.fill(WHITE)
+                    grid = make_grid(ROWS, width)
+                    draw(window, grid, ROWS, width)
+                    start = None
+                    end = None
     pygame.quit()
 
 
