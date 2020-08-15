@@ -226,6 +226,13 @@ def main(window, width):
                     pf.dijkstra_shortest_path(lambda: draw(window, grid,
                                                            ROWS, width), grid, start, end)
 
+                if event.key == pygame.K_KP2 and start and end:
+                    print("heelo jonathan")
+                    update_nodes_neighbors(grid)
+
+                    pf.bi_directional_search(lambda: draw(window, grid,
+                                                          ROWS, width), grid, start, end)
+
                 elif event.key == pygame.K_c:
                     window.fill(WHITE)
                     grid = make_grid(ROWS, width)
