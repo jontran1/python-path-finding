@@ -227,7 +227,6 @@ def main(window, width):
                                                            ROWS, width), grid, start, end)
 
                 if event.key == pygame.K_KP2 and start and end:
-                    print("heelo jonathan")
                     update_nodes_neighbors(grid)
 
                     pf.bi_directional_search(lambda: draw(window, grid,
