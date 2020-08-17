@@ -1,5 +1,6 @@
 import pygame
 import path_finding as pf
+import search
 import heuristic
 
 WIDTH = 800
@@ -231,6 +232,12 @@ def main(window, width):
 
                     pf.bi_directional_search(lambda: draw(window, grid,
                                                           ROWS, width), grid, start, end)
+
+                if event.key == pygame.K_KP3 and start and end:
+                    update_nodes_neighbors(grid)
+
+                    search.breadth_first_search(lambda: draw(window, grid,
+                                                             ROWS, width), start, end)
 
                 elif event.key == pygame.K_c:
                     window.fill(WHITE)
