@@ -13,6 +13,11 @@ def breadth_first_search(draw, start, end):
     queue.append(start)
 
     while len(queue) > 0:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
         current = queue.pop(0)
 
         if current == end:
