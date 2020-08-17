@@ -30,6 +30,7 @@ Thanks to this video for getting me started.  https://www.youtube.com/watch?v=Jt
 - Left clicking after the start and end nodes are set will build walks.
 - Right click to remove nodes from the grid. 
 - Algorithms won't work without start and end node being set.
+- Press c to clear grid.
 
 ### How To Run Algorithms:
 
@@ -67,3 +68,4 @@ Thanks to this video for getting me started.  https://www.youtube.com/watch?v=Jt
 ### Depth First Search
 
 ![dfs](/images/dfs.gif)
+
