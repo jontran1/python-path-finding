@@ -1,3 +1,6 @@
+import pygame
+
+
 def breadth_first_search(draw, start, end):
     """
         draw: lambda function. This function is called each while loop iteration. 
@@ -43,6 +46,10 @@ def depth_first_search(draw, start, end):
     stack.append(start)
 
     while len(stack) > 0:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
 
         current = stack.pop()
 
