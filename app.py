@@ -239,6 +239,12 @@ def main(window, width):
                     search.breadth_first_search(lambda: draw(window, grid,
                                                              ROWS, width), start, end)
 
+                if event.key == pygame.K_KP4 and start and end:
+                    update_nodes_neighbors(grid)
+
+                    search.depth_first_search(lambda: draw(window, grid,
+                                                           ROWS, width), start, end)
+
                 elif event.key == pygame.K_c:
                     window.fill(WHITE)
                     grid = make_grid(ROWS, width)
